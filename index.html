@@ -16,7 +16,7 @@
     
 </body>
 
-<script>
+<script type="text/javascript">
 
 //array to keep possible answers
 
@@ -30,20 +30,29 @@ var Losses = 0
 
 //input from the user
 
-document.onkeyup = function(event){
+document.onkeyup = function(start){
 
 // this keeps track of guess
     var userGuess = eventkey
+    console.log(userGuess)
 
 //math funtion to pull the number
     var computerGuess = answer[Math.floor(Math.random() * answer.length)];
 
 }
 
+//logic of the game
+ if (userGuess === computerGuess){
+     wins++
+     //break
+ }
+ else (remainingGuesses--)
+ 
 
-
-math(random) 
-
+ if (remainingGuesses === 0){
+     losses++
+     //break
+ }
 
 // compare input  to answer
 
