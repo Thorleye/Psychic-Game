@@ -8,23 +8,45 @@
    
 </head>
 <body>
+  
     <h1>Psychic Game</h1>
-
-    Guess a number from 0-9
+    <div id="game">
+        <p>Guess a number from 0-9</p>
+    </div>
     
 </body>
 
 <script>
-//input from the user
 
 //array to keep possible answers
 
+var answer = ["0", "1", "2", "3", "4", "5", "6", "7", "8" ,"9"]
+console.log(answer)
+
+//variables to keep score
+var remainingGuesses = 3
+var Wins = 0
+var Losses = 0
+
+//input from the user
+
+document.onkeyup = function(event){
+
+// this keeps track of guess
+    var userGuess = eventkey
+
 //math funtion to pull the number
+    var computerGuess = answer[Math.floor(Math.random() * answer.length)];
+
+}
+
+
+
+math(random) 
 
 
 // compare input  to answer
 
-//variables to keep score
 
 
 
