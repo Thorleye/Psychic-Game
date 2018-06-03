@@ -25,34 +25,53 @@ console.log(answer)
 
 //variables to keep score
 var remainingGuesses = 3
-var Wins = 0
-var Losses = 0
+var wins = 0
+var losses = 0
 
 //input from the user
+//math funtion to pull the number
 
-document.onkeyup = function(start){
+
+var computerGuess = answer[Math.floor(Math.random() * answer.length)];
+console.log(computerGuess)
+
+document.onkeyup = function(event){
 
 // this keeps track of guess
-    var userGuess = eventkey
+    var userGuess = event.key
     console.log(userGuess)
 
-//math funtion to pull the number
-    var computerGuess = answer[Math.floor(Math.random() * answer.length)];
 
-}
+
+// need to define userGuess
+
 
 //logic of the game
  if (userGuess === computerGuess){
      wins++
-     //break
  }
- else (remainingGuesses--)
+ else {
+remainingGuesses--} 
  
-
- if (remainingGuesses === 0){
+if (remainingGuesses === 0){
      losses++
+     remainingGuesses = 3
+
      //break
  }
+        // Creating a variable to hold our new HTML. Our HTML now keeps track of the user and computer guesses, and wins/losses/ties.
+        var gameRecord =
+          "<p>You chose: " + userGuess + "</p>" +
+          
+          "<p>Remaining Guesses: " + remainingGuesses + "</p>" +
+          "<p>Losses: " + losses + "</p>" +
+          "<p>Wins: " + wins + "</p>" +
+          //remove this
+          "<p>computer chose: " + computerGuess + "</p>" ;
+
+        // Set the inner HTML contents of the #game div to our html string
+        document.querySelector("#game").innerHTML = gameRecord;
+}
 
 // compare input  to answer
 
