@@ -11,7 +11,7 @@
   
     <h1>Psychic Game</h1>
     <div id="game">
-        <p>Guess a number from 0-9</p>
+        <p>Guess a Letter</p>
     </div>
     
 </body>
@@ -24,24 +24,31 @@ var answer = ["a","b","c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n"
 console.log(answer)
 
 //variables to keep score
-var remainingGuesses = 3
+var remainingGuesses = 9
 var wins = 0
 var losses = 0
+var userGuessArray = []
+
+
 
 //input from the user
 //math funtion to pull the number
 
 
+var computerGuess = computerChoice()
+function computerChoice() {
+    return answer[Math.floor(Math.random() * answer.length)];
+}
 
-var computerGuess = answer[Math.floor(Math.random() * answer.length)];
 console.log(computerGuess)
 
 
 document.onkeyup = function(event){
 
 // this keeps track of guess
-    var userGuess = event.key
+    var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
     console.log(userGuess)
+    userGuessArray.push(userGuess)
 
 // need to define userGuess
 
@@ -50,7 +57,8 @@ document.onkeyup = function(event){
 //logic of the game
  if (userGuess === computerGuess){
      wins++
-     remainingGuesses = 3
+     remainingGuesses = 9
+     alert("You Win")
  }
 
  else {
@@ -58,8 +66,11 @@ remainingGuesses--}
  
 if (remainingGuesses === 0){
      losses++
-     remainingGuesses = 3
+     remainingGuesses = 9
+     alert("you lose")
  }
+
+ 
 
 
 
@@ -72,7 +83,8 @@ if (remainingGuesses === 0){
           "<p>Losses: " + losses + "</p>" +
           "<p>Wins: " + wins + "</p>" +
           //remove this
-          "<p>computer chose: " + computerGuess + "</p>" ;
+          "<p>computer chose: " + computerGuess + "</p>" +
+          "<p>Guesses so far:" + userGuessArray + "</p>" ;
 
         // Set the inner HTML contents of the #game div to our html string
         document.querySelector("#game").innerHTML = gameRecord;
