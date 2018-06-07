@@ -29,31 +29,33 @@ var wins = 0
 var losses = 0
 var userGuessArray = []
 
-
-//input from the user
-//math funtion to pull the number
-
+//math funtion to pull the computer letter from the answer array,
 var computerGuess = computerChoice()
 function computerChoice() {
-   
     return answer[Math.floor(Math.random() * answer.length)];
     console.log('computer guess: ' + computerGuess)
 }
 
+//function that will reset game elements to the default. DRY!
+function gameReset(){
+    remainingGuesses = 9;
+    userGuessArray = []
+    computerGuess = computerChoice();
+}
 
-
+//starts the game
 document.onkeyup = function(event){
 
-// this turns entry into the game
+// this turns user entry into the guess
     var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
     console.log(userGuess)
 
-// make sure you dont  have the same entry twice
+// make sure user doesn't have the same entry twice
     for (i=0; i< userGuessArray.length; i++){
     if (userGuess === userGuessArray[i])
     return} 
  
-// Want to check userGuess is a valid entry (eg: letter key only)
+// Want to check userGuess is a valid entry (eg: letter key only)/ an element of the asnswer array
     if(answer.indexOf(userGuess) !=-1){
  
 //put the user guess into the array
@@ -62,10 +64,8 @@ document.onkeyup = function(event){
 //win loss conditions
         if (userGuess === computerGuess){
         wins++;
-        remainingGuesses = 9;
-        userGuessArray = [];
         alert("You Win!");
-        computerGuess = computerChoice();
+        gameReset();
         }
 
         else {
@@ -73,23 +73,23 @@ document.onkeyup = function(event){
  
         if (remainingGuesses === 0){
         losses++;
-        remainingGuesses = 9;
         alert("You Lose");
-        userGuessArray = [];
-        computerGuess = computerChoice();
+        gameReset()
         }
 
-        // Creating a variable to hold our new HTML. Our HTML now keeps track of the user and computer guesses, and wins/losses/ties.
+        // Creating a variable to hold the new HTML. Our HTML now keeps track of the user guesses, and wins/losses
         var gameRecord =
           "<p>You chose: " + userGuess + "</p>" +
           "<p>Remaining Guesses: " + remainingGuesses + "</p>" +
-          "<p>Losses: " + losses + "</p>" +
           "<p>Wins: " + wins + "</p>" +
+          "<p>Losses: " + losses + "</p>" +
           "<p>Guesses so far: " + userGuessArray + "</p>" ;
 
         // Set the inner HTML contents of the #game div to our html string
         document.querySelector("#game").innerHTML = gameRecord;
     }  
 }
+
 </script>
 </html>
+
