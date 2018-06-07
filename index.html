@@ -33,14 +33,16 @@ var userGuessArray = []
 var computerGuess = computerChoice()
 function computerChoice() {
     return answer[Math.floor(Math.random() * answer.length)];
-    console.log('computer guess: ' + computerGuess)
 }
+console.log('computer guess: ' + computerGuess);
 
 //function that will reset game elements to the default. DRY!
 function gameReset(){
     remainingGuesses = 9;
     userGuessArray = []
     computerGuess = computerChoice();
+    console.log('computer guess: ' + computerGuess);
+
 }
 
 //starts the game
