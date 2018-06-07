@@ -47,60 +47,49 @@ document.onkeyup = function(event){
 // this turns entry into the game
     var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
     console.log(userGuess)
-// make sure you dont  have the same entry twice
 
+// make sure you dont  have the same entry twice
     for (i=0; i< userGuessArray.length; i++){
     if (userGuess === userGuessArray[i])
     return} 
  
-// Want to check userGuess is a valid entry (eg a letter key only)
-
+// Want to check userGuess is a valid entry (eg: letter key only)
     if(answer.indexOf(userGuess) !=-1){
-    console.log("no match")
-    //return}
-
-    
-
+ 
 //put the user guess into the array
-
-userGuessArray.push(userGuess)
+        userGuessArray.push(userGuess)
 
 //win loss conditions
-    if (userGuess === computerGuess){
-     wins++;
-     remainingGuesses = 9;
-     userGuessArray = [];
-     alert("You Win!");
-     computerGuess = computerChoice();
-  
- }
+        if (userGuess === computerGuess){
+        wins++;
+        remainingGuesses = 9;
+        userGuessArray = [];
+        alert("You Win!");
+        computerGuess = computerChoice();
+        }
 
-    else {
-    remainingGuesses--} ;
+        else {
+        remainingGuesses--} ;
  
-    if (remainingGuesses === 0){
-     losses++;
-     remainingGuesses = 9;
-     alert("You Lose");
-     userGuessArray = [];
-     computerGuess = computerChoice();
-
- }
+        if (remainingGuesses === 0){
+        losses++;
+        remainingGuesses = 9;
+        alert("You Lose");
+        userGuessArray = [];
+        computerGuess = computerChoice();
+        }
 
         // Creating a variable to hold our new HTML. Our HTML now keeps track of the user and computer guesses, and wins/losses/ties.
         var gameRecord =
           "<p>You chose: " + userGuess + "</p>" +
-          
           "<p>Remaining Guesses: " + remainingGuesses + "</p>" +
           "<p>Losses: " + losses + "</p>" +
           "<p>Wins: " + wins + "</p>" +
-//  "<p>computer chose: " + computerGuess + "</p>" +  display answer
           "<p>Guesses so far: " + userGuessArray + "</p>" ;
 
         // Set the inner HTML contents of the #game div to our html string
         document.querySelector("#game").innerHTML = gameRecord;
     }  
 }
-
 </script>
 </html>
