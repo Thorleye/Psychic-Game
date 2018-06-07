@@ -55,16 +55,18 @@ document.onkeyup = function(event){
  
 // Want to check userGuess is a valid entry (eg a letter key only)
 
-    //for (t=0; t < answer.length; t++){
-    //if (userGuess != answer[t])
+    if(answer.indexOf(userGuess) !=-1){
+    console.log("no match")
     //return}
+
+    
 
 //put the user guess into the array
 
 userGuessArray.push(userGuess)
 
 //win loss conditions
- if (userGuess === computerGuess){
+    if (userGuess === computerGuess){
      wins++;
      remainingGuesses = 9;
      userGuessArray = [];
@@ -73,10 +75,10 @@ userGuessArray.push(userGuess)
   
  }
 
- else {
-remainingGuesses--} ;
+    else {
+    remainingGuesses--} ;
  
-if (remainingGuesses === 0){
+    if (remainingGuesses === 0){
      losses++;
      remainingGuesses = 9;
      alert("You Lose");
@@ -97,6 +99,7 @@ if (remainingGuesses === 0){
 
         // Set the inner HTML contents of the #game div to our html string
         document.querySelector("#game").innerHTML = gameRecord;
+    }  
 }
 
 </script>
